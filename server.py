@@ -13,7 +13,7 @@ def show_chat():
 @app.route('/create_message', methods=['POST'])
 def create_message():
 
-    new_message = request.form.get("message-field")
+    new_message = request.form.get("new_message")
     global messages
     messages.append(new_message)
 

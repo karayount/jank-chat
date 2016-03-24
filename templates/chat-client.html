@@ -17,17 +17,16 @@
             setInterval(getMessages, 3000);
 
             function getMessages() {
-                $.get("/deliver_new_messages.json", function(result) {
-                    $.("#messages").innerHTML = result.messages;
-                });
+                $.get("/deliver_new_messages.json", refreshMessages);
+            }
+            function refreshMessages(result) {
+                $.('#messages').innerHTML = result.messages;
             }
 
             $('#message-form').submit(addMessage);
 
             function addMessage(evt) {
                 evt.preventDefault();
-                $('#search-yarn').addClass('hidden');
-                $('#add-new-yarn').removeClass('hidden');
                 var newMsg = $('#message-field').val();
                 var payload = {"new_message": newMsg};
 
