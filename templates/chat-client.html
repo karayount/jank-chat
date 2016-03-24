@@ -27,7 +27,7 @@
                 var newMsg = $('#message-field').val();
                 var payload = {"new_message": newMsg};
                 $('#message-field').val("");
-                $.post("/create_message", payload);
+                $.post("/create_message", payload, getMessages);
             }
 
             $('#message-form').submit(addMessage);

@@ -18,8 +18,6 @@ def create_message():
     global messages
     messages.append(new_message)
 
-    return redirect('/')
-
 
 @app.route('/deliver_new_messages.json')
 def deliver_messages():
