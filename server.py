@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
 
 app = Flask(__name__)
 
@@ -17,7 +17,7 @@ def create_message():
     global messages
     messages.append(new_message)
 
-    return deliver_messages()
+    return redirect('/')
 
 
 @app.route('/deliver_new_messages.json')
