@@ -2,11 +2,11 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-
 messages = []
 
 @app.route('/')
 def show_chat():
+
     return render_template("chat-client.html")
 
 
@@ -30,14 +30,13 @@ if __name__ == '__main__':
     app.run()
 
 
-
-curl 127.0.0.1:5000/deliver_new_messages.json
-{
-  "messages": [
-    "I am a string",
-    "'string'",
-    "string"
-  ]
-}
-curl --data "field-name=string" 127.0.0.1:5000/create_message
-{}
+# curl 127.0.0.1:5000/deliver_new_messages.json
+# {
+#   "messages": [
+#     "I am a string",
+#     "'string'",
+#     "string"
+#   ]
+# }
+# curl --data "message-field=string" 127.0.0.1:5000/create_message
+# {}
