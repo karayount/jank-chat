@@ -5,10 +5,9 @@
     </head>
 
     <body>
-        test the body
-        <!-- <div id=messages></div>
+        <div id=messages></div>
 
-        <form action="/create_message" method="post">
+        <form action="/create_message" id="message-form" method="post">
             <input type=text name=message-field></input>
             <input type=submit value="Send message"></input>
         </form>
@@ -22,6 +21,18 @@
                     $.("#messages").innerHTML = result.messages;
                 });
             }
-        </script> -->
+
+            $('#message-form').submit(addMessage);
+
+            function addMessage(evt) {
+                evt.preventDefault();
+                $('#search-yarn').addClass('hidden');
+                $('#add-new-yarn').removeClass('hidden');
+                var newMsg = $('#message-field').val();
+                var payload = {"new_message": newMsg};
+
+                $.post("/create_message", payload);
+            }
+        </script>
     </body>
 </html>

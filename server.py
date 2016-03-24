@@ -17,7 +17,7 @@ def create_message():
     global messages
     messages.append(new_message)
 
-    return jsonify({})
+    return deliver_messages()
 
 
 @app.route('/deliver_new_messages.json')
