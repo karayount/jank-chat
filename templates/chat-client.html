@@ -5,10 +5,10 @@
     </head>
 
     <body>
-        <div id=messages></div>
+        <div id=messages>messages go here</div>
 
         <form action="/create_message" id="message-form" method="post">
-            <input type=text name=message-field></input>
+            <input type=text id="message-field" name=message-field></input>
             <input type=submit value="Send message"></input>
         </form>
 
@@ -17,21 +17,21 @@
             setInterval(getMessages, 3000);
 
             function getMessages() {
-                $.get("/deliver_new_messages.json", refreshMessages);
+                $.get("/deliver_new_messages.json", function(result) {
+                    $('#messages').html(result.messages);
+                });
             }
-            function refreshMessages(result) {
-                $.('#messages').innerHTML = result.messages;
-            }
-
-            $('#message-form').submit(addMessage);
 
             function addMessage(evt) {
                 evt.preventDefault();
                 var newMsg = $('#message-field').val();
                 var payload = {"new_message": newMsg};
-
+                $('#message-field').val("");
                 $.post("/create_message", payload);
             }
+
+            $('#message-form').submit(addMessage);
+
         </script>
     </body>
 </html>

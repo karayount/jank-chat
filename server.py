@@ -14,6 +14,7 @@ def show_chat():
 def create_message():
 
     new_message = request.form.get("new_message")
+    new_message = new_message + "\n"
     global messages
     messages.append(new_message)
 
